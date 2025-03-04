@@ -19,11 +19,9 @@ export default function NavBar() {
     const readUser = async () => {
         console.log("Ingresando a readUser")
         const lUser = await readData("users", "email", user.email);
-        if(lUser.val()) {
-            setLocalUser(lUser.val()[Object.keys(lUser.val())[0]]);
-        }
+        if(lUser.val()) console.log(lUser.val()[Object.keys(lUser.val())[0]]);
         const lUser2 = await readDataFirestore("users", "email", user.email);
-        if(!lUser2.empty) console.log(lUser2.docs[0].data())
+        if(!lUser2.empty) setLocalUser(lUser2.docs[0].data())
     };
 
     return (
